@@ -1,17 +1,13 @@
+# importações
 import csv
+import funcoes as f
 
-def imprime_lista(lista, maximo):
-    if len(lista) > maximo:
-        nova_lista = lista[:maximo]
-        return nova_lista
-    else:
-        return lista
-
+# variaveis
 dataset = 'PokemonStats.csv'
 maior_hp = soma_hp = maior_attack = soma_attack = contador = contador_hp_validos = contador_atk_validos = 0
 menor_hp = 250
 menor_attack = 134
-lista_filtro1 = []
+lista_filtro1 = lista_filtro2 = []
 
 with open(dataset, 'r', encoding='utf-8') as arquivo:
     leitor = csv.DictReader(arquivo)
@@ -43,13 +39,10 @@ with open(dataset, 'r', encoding='utf-8') as arquivo:
 
         contador += 1
         if contador < 6:
-            print(registro)
-        media_hp = soma_hp / contador
-        media_atk = soma_attack / contador
+            print(registro) # mostra os 5 primeiros registros
 
-    print(f'O Dataset {dataset} possui {contador-1} arquivos')
-    print(f'Nomes das colunas: {leitor.fieldnames}')
-    print(f'Dados sobre HP: Valor Máximo: {maior_hp}. Valor mínimo: {menor_hp}. Média Aritmética: {media_hp:.2f}. Valores válidos: {contador_hp_validos - 1}. Valores inválidos: {contador - contador_hp_validos}')
-    print(f'Dados sobre Attack: Valor Máximo: {maior_attack}. Valor mínimo: {menor_attack}. Média Aritmética: {media_atk:.2f}. Valores válidos: {contador_atk_validos - 1}. Valores inválidos: {contador - contador_atk_validos}')
-
-    print(f'Filtro 1: Pokemons do Tipo Normal com HP acima de 60. Registros: {imprime_lista(lista_filtro1, 10)}. Total de ocorrências: {len(lista_filtro1)}')
+    print(f'O Dataset {dataset} possui {contador-1} arquivos') # quantidade de registros
+    print(f'Nomes das colunas: {leitor.fieldnames}') # nome das colunas
+    print(f'Dados sobre HP: Valor Máximo: {maior_hp}. Valor mínimo: {menor_hp}. Média Aritmética: {f.media(soma_hp, contador):.2f}. Valores válidos: {contador_hp_validos - 1}. Valores inválidos: {contador - contador_hp_validos}') # dados sobre coluna HP
+    print(f'Dados sobre Attack: Valor Máximo: {maior_attack}. Valor mínimo: {menor_attack}. Média Aritmética: {f.media(soma_attack, contador):.2f}. Valores válidos: {contador_atk_validos - 1}. Valores inválidos: {contador - contador_atk_validos}') # dados sobre coluna Attack
+    print(f'Filtro 1: Pokemons do Tipo Normal com HP acima de 60. Registros: {f.imprime_lista(lista_filtro1, 10)}. Total de ocorrências: {len(lista_filtro1)}') # Filtro 1
