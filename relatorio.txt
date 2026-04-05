@@ -1,0 +1,8 @@
+Dataset: PokemonStats.csv. Uma coleção de dados que reúne as principais informações dos pokémons da primeira geração de jogos
+O dataset possui 151 registros e 13 colunas.
+Dados sobre HP: Valor Máximo: 250. Valor mínimo: 10. Média Aritmética: 64.21. Valores válidos: 151. Valores inválidos: 0
+Dados sobre Attack: Valor Máximo: 134. Valor mínimo: 5. Média Aritmética: 72.91. Valores válidos: 151. Valores inválidos: 0
+Filtro 1: Pokemons do Tipo Normal com HP acima de 60. Registros: ['Pidgeotto', 'Pidgeot', 'Fearow', 'Jigglypuff', 'Wigglytuff', 'Persian', 'Lickitung', 'Chansey', 'Kangaskhan', 'Tauros']. Total de ocorrências: 12
+Filtro 2: Pokemons do Tipo Água com Speed acima de 80 e Attack abaixo de 80. Registros: ['Poliwag', 'Poliwhirl', 'Tentacruel', 'Seadra', 'Staryu', 'Starmie']. Total de ocorrências: 6
+Filtro 3: Pokemons Sweepers (alta velocidade e ataque especial para finalizar adversários). Registros: ['Charizard', 'Kadabra', 'Alakazam', 'Gengar', 'Starmie', 'Jolteon', 'Zapdos', 'Mewtwo', 'Mew']. Total de ocorrências: 9
+Algumas curiosidades sobre o dataset: a) Em geral a primeira geração tem um foco maior em ataque do que em defesa/resistência. b) Em geral, os pokemons costumam ter status equilibrados, tanto que Chamsey possui o maior HP (250), porém o menor ataque (5). c) A maior parte dos sweepers possui uma baixa defesa (por isso são chamados de canhões de vidro).

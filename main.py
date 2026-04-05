@@ -14,7 +14,6 @@ lista_filtro3 = []
 with open(dataset, 'r', encoding='utf-8') as arquivo:
     leitor = csv.DictReader(arquivo) # lê cada linha do database como um dicionário onde as chaves são os nomes das colunas
     for registro in leitor:
-        # dados relevantes
         hp = registro['HP'].strip() 
         attack = registro['Attack'].strip() 
         sp_attack = registro['SpAtk'].strip()            
@@ -62,18 +61,30 @@ with open(dataset, 'r', encoding='utf-8') as arquivo:
                         lista_filtro3.append(registro['Name'])
 
         contador += 1 # quantidade de registros
-        if contador < 6:
-            print(registro) # mostra os 5 primeiros registros
+        '''if contador < 6:
+            print(registro) # mostra os 5 primeiros registros'''
 
-# exposição dos dados
+'''# exposição dos dados
 print(f'O Dataset {dataset} possui {contador} registros') # quantidade de registros
 print(f'Nomes das colunas: {leitor.fieldnames}') # nome das colunas
 print(f'Dados sobre HP: Valor Máximo: {maior_hp}. Valor mínimo: {menor_hp}. Média Aritmética: {f.media(soma_hp, contador_hp_validos):.2f}. Valores válidos: {contador_hp_validos}. Valores inválidos: {contador - contador_hp_validos}') # dados sobre coluna HP
 print(f'Dados sobre Attack: Valor Máximo: {maior_attack}. Valor mínimo: {menor_attack}. Média Aritmética: {f.media(soma_attack, contador_atk_validos):.2f}. Valores válidos: {contador_atk_validos}. Valores inválidos: {contador - contador_atk_validos}') # dados sobre coluna Attack
 print(f'Filtro 1: Pokemons do Tipo Normal com HP acima de 60. Registros: {f.imprime_lista(lista_filtro1, 10)}. Total de ocorrências: {len(lista_filtro1)}') # Filtro 1
 print(f'Filtro 2: Pokemons do Tipo Água com Speed acima de 80 e Attack abaixo de 80. Registros: {f.imprime_lista(lista_filtro2, 10)}. Total de ocorrências: {len(lista_filtro2)}') # Filtro 2
-print(f'Filtro 3: Pokemons Sweepers (alta velocidade e ataque especial para finalizar adversários). Registros: {f.imprime_lista(lista_filtro3, 10)}. Total de ocorrências: {len(lista_filtro3)}') # Filtro 3
+print(f'Filtro 3: Pokemons Sweepers (alta velocidade e ataque especial para finalizar adversários). Registros: {f.imprime_lista(lista_filtro3, 10)}. Total de ocorrências: {len(lista_filtro3)}') # Filtro 3'''
 
-# geração do relatório TXT
+# geração do relatorio txt
+texto_relatorio = [
+    f'Dataset: {dataset}. Uma coleção de dados que reúne as principais informações dos pokémons da primeira geração de jogos',
+    f'O dataset possui {contador} registros e {len(leitor.fieldnames)} colunas.',
+    f'Dados sobre HP: Valor Máximo: {maior_hp}. Valor mínimo: {menor_hp}. Média Aritmética: {f.media(soma_hp, contador_hp_validos):.2f}. Valores válidos: {contador_hp_validos}. Valores inválidos: {contador - contador_hp_validos}', # dados sobre coluna HP
+    f'Dados sobre Attack: Valor Máximo: {maior_attack}. Valor mínimo: {menor_attack}. Média Aritmética: {f.media(soma_attack, contador_atk_validos):.2f}. Valores válidos: {contador_atk_validos}. Valores inválidos: {contador - contador_atk_validos}',
+    f'Filtro 1: Pokemons do Tipo Normal com HP acima de 60. Registros: {f.imprime_lista(lista_filtro1, 10)}. Total de ocorrências: {len(lista_filtro1)}',
+    f'Filtro 2: Pokemons do Tipo Água com Speed acima de 80 e Attack abaixo de 80. Registros: {f.imprime_lista(lista_filtro2, 10)}. Total de ocorrências: {len(lista_filtro2)}',
+    f'Filtro 3: Pokemons Sweepers (alta velocidade e ataque especial para finalizar adversários). Registros: {f.imprime_lista(lista_filtro3, 10)}. Total de ocorrências: {len(lista_filtro3)}',
+    'Algumas curiosidades sobre o dataset: a) Em geral a primeira geração tem um foco maior em ataque do que em defesa/resistência. b) Em geral, os pokemons costumam ter status equilibrados, tanto que Chamsey possui o maior HP (250), porém o menor ataque (5). c) A maior parte dos sweepers possui uma baixa defesa (por isso são chamados de canhões de vidro).'
+]
+
 with open('relatorio.txt', 'w', encoding='utf-8') as arquivo:
-    
+    for linha in texto_relatorio:
+        arquivo.write(f'{linha}\n')
